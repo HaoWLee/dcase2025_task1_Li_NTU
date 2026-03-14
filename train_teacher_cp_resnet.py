@@ -382,8 +382,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Example of parser. ')
 
     # general
-    parser.add_argument('--project_name', type=str, default="DCASE23_Task1")
-    parser.add_argument('--experiment_name', type=str, default="CPJKU_cp-resnet_teacher_training_sub25")
+    parser.add_argument('--project_name', type=str, default="DCASE25_Task1")
+    parser.add_argument('--experiment_name', type=str, default="cp-resnet_teacher_training_sub25")
     parser.add_argument('--num_workers', type=int, default=16)  # number of workers for dataloaders
     parser.add_argument('--subset', type=int, default=25)
     # dataset

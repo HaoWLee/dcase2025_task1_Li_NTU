@@ -39,8 +39,8 @@ def ensemble_logits(csv_files, output_csv):
 
 if __name__ == "__main__":
     # 设置路径
-    input_dir = "predictions_2T"  # 所有 teacher logits 所在文件夹
-    output_csv = "ensemble/ensemble_logits_2T_1C1P.csv"
+    input_dir = "predictions_4T"  # 所有 teacher logits 所在文件夹
+    output_csv = "ensemble/ensemble_logits_4T.csv"
 
     # 自动查找子目录下的所有 logits.csv
     csv_files = glob.glob(os.path.join(input_dir, "*", "*.csv"))

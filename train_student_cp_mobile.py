@@ -44,7 +44,7 @@ class PLModule(pl.LightningModule):
                                )
         self.proj_layer = nn.Conv2d(in_channels=104,out_channels=92,kernel_size=1)
         self.teacher_model = get_teacher_model(base_channels=32)  # 改成你 teacher ckpt 对应的参数
-        teacher_ckpt = torch.load("/home/lihaowen/cpjku_dcase23-main/DCASE23_Task1/via2gkii/checkpoints/epoch=149-step=20550.ckpt", map_location="cpu")
+        teacher_ckpt = torch.load("/teacher_ckpt/via2gkii/checkpoints/epoch=149-step=20550.ckpt", map_location="cpu")
         self.teacher_model.load_state_dict(teacher_ckpt["state_dict"], strict=False)
         self.teacher_model.eval()  # 不训练 teacher
         self.teacher_features = {}
@@ -490,8 +490,8 @@ def train(config):
     # logging is done using wandb
     wandb_logger = WandbLogger(
         project=config.project_name,
-        notes="CPJKU pipeline for DCASE23 Task 1.",
-        tags=["DCASE23"],
+        notes="Pipeline for DCASE25 Task 1.",
+        tags=["DCASE25"],
         config=config,  # this logs all hyperparameters for us
         name=config.experiment_name
     )
@@ -554,8 +554,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Example of parser. ')
 
     # general
-    parser.add_argument('--project_name', type=str, default="DCASE23_Task1")
-    parser.add_argument('--experiment_name', type=str, default="CPJKU_cp-mobile_student_training_sub25_Tresnet_stage3_output4T_submission3_64k")
+    parser.add_argument('--project_name', type=str, default="DCASE25_Task1")
+    parser.add_argument('--experiment_name', type=str, default="SUB2")
     parser.add_argument('--num_workers', type=int, default=12)  # number of workers for dataloaders
 
     # dataset

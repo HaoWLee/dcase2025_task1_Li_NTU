@@ -101,8 +101,8 @@ def main(args):
     print("[ModelSoup] ✅ Saved class-wise and device-wise acc to CSV.")
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--ckpt_dir", type=str, default="/home/lihaowen/submission/cp-mobile_student_training_sub25_Tresnet_stage3_output4T_submission3_64k", help="Path to folder with multiple ckpts")
-    parser.add_argument("--output_dir", type=str, default="averaged_ckpt_submission3_64k_3_testwith25", help="Where to save averaged ckpt")
+    parser.add_argument("--ckpt_dir", type=str, default="/model_soup", help="Path to folder with multiple ckpts")
+    parser.add_argument("--output_dir", type=str, default="averaged_ckpt", help="Where to save averaged ckpt")
     config = Namespace(
         project_name="Submission",
         experiment_name="CPJKU_cp-avg_model_soup_test_sub3",

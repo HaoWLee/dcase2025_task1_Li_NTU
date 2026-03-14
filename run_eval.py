@@ -315,7 +315,7 @@ def train(config):
 
     # ==== 自动生成唯一实验名称 ====
     exp_time = datetime.now().strftime('%Y%m%d_%H%M%S')
-    unique_name = f"{config.experiment_name}_subset{config.subset}_workers{config.num_workers}_{exp_time}_speedasJ"
+    unique_name = f"{config.experiment_name}_subset{config.subset}_workers{config.num_workers}_{exp_time}"
     output_dir = os.path.join("outputs", unique_name)
     os.makedirs(output_dir, exist_ok=True)
 
@@ -478,14 +478,14 @@ def evaluate(config):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='DCASE 24 argument parser')
+    parser = argparse.ArgumentParser(description='DCASE 25 argument parser')
 
-    parser.add_argument('--ckpt_path', type=str, default="/home/lihaowen/cpjku_dcase23-main/averaged_ckpt_submission3_64k/averaged_model.ckpt")
-    parser.add_argument('--ckpt_id', type=str, default="submiss3_3_testwith24_lib_1")
+    parser.add_argument('--ckpt_path', type=str, default="/averaged_ckpt/averaged_model.ckpt")
+    parser.add_argument('--ckpt_id', type=str, default="SUB2")
     parser.add_argument('--output_csv', type=str, default="predictions/dx9l4jr8/sub1_evaluation.csv")
     # general
-    parser.add_argument('--project_name', type=str, default="DCASE23_Task1")
-    parser.add_argument('--experiment_name', type=str, default="CPJKU_cp-mobile_student_training_sub25_4T_submission4_64k_test")
+    parser.add_argument('--project_name', type=str, default="DCASE25_Task1")
+    parser.add_argument('--experiment_name', type=str, default="mobile_student_training_sub25_4T_submission2_64k_test")
     parser.add_argument('--num_workers', type=int, default=12)  # number of workers for dataloaders
     parser.add_argument('--precision', type=str, default="32")
     # dataset

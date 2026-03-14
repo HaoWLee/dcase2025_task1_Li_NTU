@@ -111,9 +111,9 @@ def generate_logits_lightning(config, ckpt_path, output_csv):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--ckpt_path', type=str, default="/home/lihaowen/cpjku_dcase23-main/DCASE23_Task1/hgl99gad/checkpoints/epoch=24-step=10925.ckpt")
-    parser.add_argument('--output_csv', type=str, default="predictions/hgl99gad/logits_passt_25_augRollDir.csv")
-    parser.add_argument('--meta_csv', type=str, default="/home/lihaowen/dcase2025_task1_baseline-main/dataset/meta.csv")
+    parser.add_argument('--ckpt_path', type=str, default="/teacher_ckpt/via2gkii/checkpoints/epoch=149-step=20550.ckpt")
+    parser.add_argument('--output_csv', type=str, default="/predictions/via2gkii/logits_cp_resnet.csv")
+    parser.add_argument('--meta_csv', type=str, default="/dataset/meta.csv")
     parser.add_argument('--cache_path', type=str, default=os.path.join("datasets", "cpath"))
     parser.add_argument('--subset', type=int, default=25)
     '''
