@@ -70,20 +70,32 @@ This ensemble improves stability and reduces bias from individual teacher models
 
 ---
 
-### Step 4: Student Model Training (`train_student_cp_mobile.py`)
+### Step 4: Student Model Training (`train_student_cp_mobile_sub1.py train_student_cp_mobile_sub2.py`)
+
 
 A lightweight **CP-Mobile** model is trained using a **joint knowledge distillation framework**.
 
+Two student training configurations are provided, corresponding to the two submitted systems:
+
+- **Submission 1 (S1)**  
+  Trained using **Self-Similarity Feature Matching (SSFM)** for feature-level distillation.
+
+- **Submission 2 (S2)**  
+  Trained using **Direct Feature Matching (DFM)** for feature-level distillation.
+
+Both configurations use the same multi-teacher supervision from **2×PaSST and 2×CP-ResNet** models.
+
 The training objective combines three loss components:
 
-- **Soft Target Distillation Loss**
-  - KL divergence between student predictions and ensembled teacher outputs
+- **Soft Target Distillation Loss**  
+  KL divergence between student predictions and the **ensembled teacher outputs**.
 
-- **Feature Distillation Loss**
-  - Aligns intermediate representations between the student and a **CP-ResNet teacher**
+- **Feature Distillation Loss**  
+  Aligns intermediate representations between the student model and a **CP-ResNet teacher**.
 
-- **Cross-Entropy Loss**
-  - Standard supervised loss using ground-truth labels
+- **Cross-Entropy Loss**  
+  Standard supervised loss using ground-truth labels.
+
 
 The final training objective is
 L = α Lsoft + β Lfeat + γ Lce
@@ -189,17 +201,28 @@ python ensemble_logits_from_csv.py
 
 ### Step 3: Train the Student Model
 
-The student model (**CP-Mobile**) is trained using a **joint distillation framework** combining:
+The student model (**CP-Mobile**) is trained using a **joint knowledge distillation framework** combining:
 
 - **Output-level distillation**
 - **Feature-level distillation**
 - **Cross-entropy supervision**
+
+Two student training configurations are provided, corresponding to the two submitted systems:
+
+**Sub1 (SSFM)**  
+Uses **Self-Similarity Feature Matching (SSFM)** for feature-level distillation.
+
 ```
-python train_student_cp_mobile.py
+python train_student_cp_mobile_sub1.py
 ```
+
+**Sub2 (DFM)**  
+Uses **Direct Feature Matching (DFM)** for feature-level distillation.
 
 ---
-
+```
+python train_student_cp_mobile_sub2.py
+```
 ### Step 4: Model Soup
 
 After training convergence, the best-performing checkpoints are averaged to produce the final model.
@@ -220,16 +243,15 @@ This step reports the final class-wise, device-wise, and macro-average accuracy.
 
 
 ### Class-wise results
-| **Model**              | **Airport** | **Bus** | **Metro** | **Metro Station** | **Park** | **Public Square** | **Shopping Mall** | **Street Pedestrian** | **Street Traffic** | **Tram** | **Macro Avg. Accuracy** |
-|------------------------|------------:|--------:|----------:|------------------:|---------:|------------------:|------------------:|----------------------:|-------------------:|---------:|:-----------------------:|
-| General Model          |       45.30 |   71.68 |     55.56 |             52.86 |    80.84 |             49.83 |             72.76 |                 31.78 |             74.85  |    57.53 |      59.30              |
-
+| **Model** | **Airport** | **Bus** | **Metro** | **Metro Station** | **Park** | **Public Square** | **Shopping Mall** | **Street Pedestrian** | **Street Traffic** | **Tram** | **Macro Avg. Accuracy** |
+|----------------|------------:|--------:|----------:|------------------:|---------:|------------------:|------------------:|----------------------:|-------------------:|---------:|:-----------------------:|
+| **Sub1 (SSFM)** | 52.06 | 68.32 | 55.15 | 51.92 | 80.37 | 45.76 | 67.07 | 33.80 | 76.20 | 57.40 | **58.80** |
+| **Sub2 (DFM)** | 45.30 | 71.68 | 55.56 | 52.86 | 80.84 | 49.83 | 72.76 | 31.78 | 74.85 | 57.53 | **59.30** |
 ### Device-wise results
-| **Split**              | **A** | **B** | **C** | **S1** | **S2** | **S3** | **S4** | **S5** | **S6** | **Macro Avg. Accuracy** |
-|------------------------|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----------------------:|
-| General Model          | 68.00 | 58.66 | 63.59 | 57.18 | 56.30 | 62.12 | 58.48 | 57.24 | 52.18 |        59.30            |
-
-
+| **Model** | **A** | **B** | **C** | **S1** | **S2** | **S3** | **S4** | **S5** | **S6** | **Macro Avg. Accuracy** |
+|----------------|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----------------------:|
+| **Sub1 (SSFM)** | 68.36 | 58.81 | 63.89 | 57.27 | 53.58 | 60.64 | 57.58 | 56.61 | 52.55 | **58.80** |
+| **Sub2 (DFM)** | 68.00 | 58.66 | 63.59 | 57.18 | 56.30 | 62.12 | 58.48 | 57.24 | 52.18 | **59.30** |
 ## Inference Code
 
 https://github.com/HaoWLee/dcase2025_task1_inference

@@ -8,7 +8,7 @@ import torch.nn.functional as F
 import torch.nn as nn
 import os
 import wandb
-from datasets.dcase23_split_ownT_csv3 import get_training_set, get_test_set
+from datasets.dcase25_split_ownT_csv3 import get_training_set, get_test_set
 from helpers.init import worker_init_fn
 from models.cp_mobile_clean import get_model
 from models.mel import AugmentMelSTFT
