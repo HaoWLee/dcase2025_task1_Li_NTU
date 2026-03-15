@@ -35,14 +35,14 @@ dataset_config = {
     #"logits_file": os.path.join("predictions/ensemble/", "ensemble_logits_2T.csv")
     #"logits_file": os.path.join("predictions/hgl99gad/", "logits_passt_25_augRollDir.csv")
     #"logits_file": os.path.join("predictions/via2gkii/", "logits_cpresnet_25_augRollDir.csv")
-    #"logits_file": os.path.join("ensemble/", "ensemble_logits_4T.csv")
+    "logits_file": os.path.join("ensemble/", "ensemble_logits_4T.csv")
     #"logits_file": os.path.join("ensemble/", "ensemble_logits_6T.csv")
     #"logits_file": os.path.join("predictions/c5yggw9j/", "logits_passt_25_augRollDir_para2_FMS.csv")
     #"logits_file": os.path.join("predictions/2n8ogfyv/", "logits_passt_25_augRollDir_4761.csv")
     #"logits_file": os.path.join("ensemble/", "ensemble_logits_5T.csv")
     #"logits_file": os.path.join("TFSpec_logits/", "logits_TFSep_25_augRollDir4.csv")
     #"logits_file": os.path.join("ensemble/", "ensemble_logits_5T_TFSpec.csv")
-    "logits_file": os.path.join("ensemble/", "ensemble_logits_6T_33.csv")
+    # "logits_file": os.path.join("ensemble/", "ensemble_logits_6T_33.csv")
     #"logits_file": os.path.join("ensemble/", "ensemble_logits_2T_1C1P.csv")
 }
 
