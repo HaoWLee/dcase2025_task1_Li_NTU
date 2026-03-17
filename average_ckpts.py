@@ -105,7 +105,7 @@ if __name__ == "__main__":
     parser.add_argument("--output_dir", type=str, default="averaged_ckpt", help="Where to save averaged ckpt")
     config = Namespace(
         project_name="Submission",
-        experiment_name="CPJKU_cp-avg_model_soup_test_sub3",
+        experiment_name="cp-avg_model_soup_test_sub3",
         num_workers=12,
 
         # dataset

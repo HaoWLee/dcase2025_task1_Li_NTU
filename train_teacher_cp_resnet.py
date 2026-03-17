@@ -330,8 +330,8 @@ def train(config):
     # logging is done using wandb
     wandb_logger = WandbLogger(
         project=config.project_name,
-        notes="CPJKU pipeline for DCASE23 Task 1.",
-        tags=["DCASE23"],
+        notes="DCASE25 Task 1.",
+        tags=["DCASE25"],
         config=config,  # this logs all hyperparameters for us
         name=config.experiment_name
     )
